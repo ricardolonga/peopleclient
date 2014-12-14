@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">peopleclient</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="nomeHint">Nome...</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="verTodos">Ver todos</string>
+
+</resources>
