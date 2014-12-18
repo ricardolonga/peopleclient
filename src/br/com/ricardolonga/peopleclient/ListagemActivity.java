@@ -37,7 +37,8 @@ public class ListagemActivity extends ListActivity {
 
         @Override
         protected List<Pessoa> doInBackground(Void... params) {
-            String pessoasJson = HttpHelper.doGet("http://192.168.0.180:8080/pessoas");
+            String pessoasJson = HttpHelper.doGet("http://172.16.200.216:8080/pessoas");
+
             return Arrays.asList(new Gson().fromJson(pessoasJson, Pessoa[].class));
         }
 

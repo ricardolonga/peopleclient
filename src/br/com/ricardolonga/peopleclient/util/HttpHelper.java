@@ -5,27 +5,23 @@ import java.io.InputStream;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 
 public class HttpHelper {
 
     public static String doGet(String url) {
-        final HttpParams httpParams = new BasicHttpParams();
-
-        HttpConnectionParams.setConnectionTimeout(httpParams, 1000);
-
-        HttpClient httpclient = new DefaultHttpClient(httpParams);
+        HttpClient httpclient = new DefaultHttpClient(/* httpParams */);
 
         try {
             HttpResponse response = httpclient.execute(new HttpGet(url));
+
             InputStream content = response.getEntity().getContent();
+
             return IOUtils.toString(content, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,6 +41,15 @@ public class HttpHelper {
             post.setEntity(new StringEntity(json, HTTP.UTF_8));
 
             httpclient.execute(post);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void doDelete(String url) {
+        try {
+            new DefaultHttpClient().execute(new HttpDelete(url));
         } catch (IOException e) {
             e.printStackTrace();
         }
