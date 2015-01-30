@@ -16,6 +16,8 @@ import com.google.gson.Gson;
 
 public class FormularioActivity extends Activity {
 
+	public static final String SERVER_URL = "http://192.168.0.17:8080";
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +55,7 @@ public class FormularioActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             String nome = ((EditText) findViewById(R.id.campoNome)).getText().toString();
-            HttpHelper.doPost("http://172.16.200.216:8080/pessoas", new Gson().toJson(new Pessoa(nome)));
+            HttpHelper.doPost(SERVER_URL + "/pessoas", new Gson().toJson(new Pessoa(nome)));
             return null;
         }
 

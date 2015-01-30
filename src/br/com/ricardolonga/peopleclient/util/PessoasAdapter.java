@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import br.com.ricardolonga.peopleclient.FormularioActivity;
 import br.com.ricardolonga.peopleclient.model.Pessoa;
 
 public class PessoasAdapter extends BaseAdapter {
@@ -69,7 +70,7 @@ public class PessoasAdapter extends BaseAdapter {
 
         @Override
         protected Void doInBackground(Void... params) {
-            HttpHelper.doDelete("http://172.16.200.216:8080/pessoas/" + nome);
+            HttpHelper.doDelete(FormularioActivity.SERVER_URL + "/pessoas/" + nome);
             return null;
         }
 

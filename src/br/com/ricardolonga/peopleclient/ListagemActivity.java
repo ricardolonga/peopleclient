@@ -37,7 +37,7 @@ public class ListagemActivity extends ListActivity {
 
         @Override
         protected List<Pessoa> doInBackground(Void... params) {
-            String pessoasJson = HttpHelper.doGet("http://172.16.200.216:8080/pessoas");
+            String pessoasJson = HttpHelper.doGet(FormularioActivity.SERVER_URL + "/pessoas");
 
             return Arrays.asList(new Gson().fromJson(pessoasJson, Pessoa[].class));
         }
@@ -49,6 +49,7 @@ public class ListagemActivity extends ListActivity {
             progressDialog.dismiss();
             Toast.makeText(ListagemActivity.this, "Retornou " + pessoas.size() + " nomes.", Toast.LENGTH_LONG).show();
         }
+        
     }
 
 }
